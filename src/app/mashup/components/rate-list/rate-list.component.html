@@ -1,0 +1,141 @@
+<div class="row" soho-busyindicator [activated]="isLoading" [blockUI]="true" [transparentOverlay]="false"
+   [displayDelay]="0" [text]="loadingText" style="margin:10px 0px 0px 0px; ">
+   <div class="eight columns">
+      <div class="three columns" style="margin-left: 0px">
+         <div>
+            <label>Customer Name</label>
+         </div>
+         <div class="row">
+            <span>{{ customerName }} </span>
+         </div><br>
+      </div>
+      <div class="three columns">
+         <div>
+            <label>Order Number</label>
+         </div>
+         <div class="row">
+            <span>{{ orderNumber }} </span>
+         </div><br><br>
+      </div>
+      <div class="three columns">
+         <div class="field">
+            <label for="shipment-total-weight">Shipment Total Weight</label>
+            <span style="padding-left: 3px">{{ shipmentTWt }} {{ WeightUnit}}
+            </span>
+         </div>
+      </div>
+      <div class="three columns">
+         <div>
+            <label>Departure Date</label>
+         </div>
+         <div class="row fontSytles">
+            <input name="frdt" class="input-sm" aria-required="true" data-validate="required" soho-datepicker
+               readonly="true" [(ngModel)]="departureDate1" />
+         </div><br>
+      </div>
+      <div>
+         <div class="field three columns" style="margin-left:0px">
+            <label class="required" for="config-like-multi">Mode</label>
+            <select id="custom-dropdown-id-1" name="custom-dropdown-id-1" class="input-sm fontStyles" soho-dropdown
+               data-validate="required" data-automation-id="custom-automation-dropdown-id" [(ngModel)]="mod1"
+               (change)="onMode()" [disabled]="modeDisable">
+               <option></option>
+               <option *ngFor="let mod of modes" [ngValue]="mod">
+                  {{mod["DRTRCA"]}} - {{mod["DCTX40"]}}
+               </option>
+            </select>
+         </div>
+         <div class="three columns">
+            <label for="config-like-multi">Carriers</label>
+            <select id="custom-dropdown-id-1" name="custom-dropdown-id-1" [(ngModel)]="carrier1" (change)="onCarrier()"
+               class="input-sm fontSytles" soho-dropdown data-validate="required"
+               data-automation-id="custom-automation-dropdown-id" [disabled]="carrierDisable">
+               <option></option>
+               <option>Select All</option>
+               <option *ngFor="let carrier of carriers" [ngValue]="carrier">
+                  {{carrier["DRFWNO"]}} - {{carrier["IDSUNM"]}}
+               </option>
+            </select>
+         </div>
+         <div class="field three columns" style="margin-top: 22px;">
+            <button class="btn-primary fontSytles" type="button" style="padding: 0px 10px;word-wrap: break-word;
+            white-space: normal;" id="primary-action-two" (click)="onCallTMS()" [disabled]="tmsRates">
+               Get Freight Rates
+            </button>
+         </div>
+      </div>
+   </div>
+   <div class="two columns">
+      <div>
+         <label>Source Address</label>
+      </div>
+      <div class="row">
+         <span>{{ sourceAddressResponse["ADR1"] | titlecase }}</span>
+      </div>
+      <div class="row">
+         <span>{{ sourceAddressResponse["ADR2"] | titlecase}}</span>
+      </div>
+      <div class="row">
+         <span>{{ sourceAddressResponse["ADR3"] | titlecase }}</span>
+      </div>
+      <div class="row">
+         <span>{{ sourceAddressResponse["ADR4"] | titlecase }}</span>
+      </div>
+      <div class="row">
+         <span>{{ sourceAddressResponse["TOWN"] | titlecase}}</span>
+      </div>
+      <div class="row">
+         <span>{{ sourceAddressResponse["PONO"] | titlecase}}</span>
+      </div>
+   </div>
+
+   <div class="two columns">
+      <div>
+         <label>Destination Address</label>
+      </div>
+      <div class="row">
+         <span>{{ destinationAddressResponse["CUA1"] | titlecase}}</span>
+      </div>
+      <div class="row">
+         <span>{{ destinationAddressResponse["CUA2"] | titlecase}}</span>
+      </div>
+      <div class="row">
+         <span>{{ destinationAddressResponse["CUA3"] | titlecase}}</span>
+      </div>
+      <div class="row">
+         <span>{{ destinationAddressResponse["CUA4"] | titlecase }}</span>
+      </div>
+      <div class="row">
+         <span>{{ destinationAddressResponse["TOWN"] | titlecase}}</span>
+      </div>
+      <div class="row">
+         <span>{{ destinationAddressResponse["PONO"] | titlecase}}</span>
+      </div>
+   </div>
+   <div>
+      <div class="twelve columns" *ngIf="packageGrid">
+         <div soho-datagrid class="datagrid" [gridOptions]="packageDatagridOptions"></div>
+      </div>
+      <div>
+         <div class="twelve columns">
+            <div id="datagrid" class="dataGrid" soho-datagrid [gridOptions]="datagridOptions"
+               (selected)="onSelected($event)">
+            </div>
+            <hr style="
+            border: none;
+            border-bottom: 1px solid #bdbdbd;
+
+          " />
+         </div>
+
+         <div class="row">
+            <div style="margin: 10px 0 5px 0px; width: auto; height: auto; text-align: center;">
+               <button style="padding: 0px 10px;word-wrap: break-word" class="btn-primary fontSytles" type="button"
+                  id="primary-action-two" (click)="onCreateCharge()" [disabled]="!(chargeChanged && selectedRecord)">
+                  Update Freight Rate
+               </button>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,25 @@
+<soho-icons></soho-icons>
+<soho-icons-ext></soho-icons-ext>
+<soho-icons-empty></soho-icons-empty>
+
+<div class="page-container no-scroll" #panelPlaceholder>
+
+   <header class="header">
+
+      <soho-toolbar [hasMoreButton]="true" [maxVisibleButtons]="3">
+
+         <soho-toolbar-title>
+            <span class="bannerHeader" soho-toolbar-section-title>{{ title }}</span>
+         </soho-toolbar-title>
+      </soho-toolbar>
+
+   </header>
+
+   <div class="page-container no-scroll" id="appMain" role="main" *ngIf="isReady">
+
+      <router-outlet></router-outlet>
+
+
+   </div>
+
+</div>

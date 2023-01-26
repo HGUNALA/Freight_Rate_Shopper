@@ -1,0 +1,125 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "12.0.40.0.29",
+    "title": "ProcessWeaver REST API"
+  },
+  "basePath": "/SLSGDENA011_DEV/CustomerApi/ProcessWeaver/Api",
+  "schemes": [
+    "https"
+  ],
+  "tags": [
+    {
+      "name": "Rates"
+    }
+  ],
+  "paths": {
+    "/rates": {
+      "post": {
+        "tags": [
+          "Rates"
+        ],
+        "summary": "Get Freight Rates",
+        "description": "Get Freight Rates",
+        "operationId": "getRates",
+        "consumes": [
+          "application/json;charset=utf-8",
+          "application/xml;charset=utf-8"
+        ],
+        "produces": [
+          "application/json;charset=utf-8",
+          "application/xml;charset=utf-8"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Model of request body with necessary data for get freight rates",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FreightRates"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "FreightRates": {
+      "type": "object",
+      "properties": {
+        "RateAPI": {
+          "$ref": "#/definitions/FreightRatesInner"
+        }
+      }
+    },
+    "FreightRatesInner": {
+      "type": "object",
+      "properties": {
+        "ShipToCity": {
+          "type": "string"
+        },
+        "ShipToState": {
+          "type": "string"
+        },
+        "ShipToCountry": {
+          "type": "string"
+        },
+        "ShipToZipcode": {
+          "type": "string"
+        },
+        "ShipFromCity": {
+          "type": "string"
+        },
+        "ShipFromState": {
+          "type": "string"
+        },
+        "ShipFromCountry": {
+          "type": "string"
+        },
+        "ShipFromZipcode": {
+          "type": "string"
+        },
+        "TotalWeight": {
+          "type": "string"
+        },
+        "DeliveryDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

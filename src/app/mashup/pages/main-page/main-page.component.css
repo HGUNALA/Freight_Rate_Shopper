@@ -1,0 +1,8 @@
+#mainPage {
+   height: calc(100vh - 35px);
+   overflow-x: hidden;
+   overflow-y: auto;
+}
+#mainPage > div {
+   overflow-y: auto;
+}

@@ -1,0 +1,30 @@
+/* .rateDataGrid {
+   min-height: 250px;
+   max-height: 250px;
+
+} */
+
+
+/* rate-list .datagrid-container {
+   height: 250px!important;
+}
+rate-list .datagrid-body {
+   height: 200px!important;
+} */
+
+
+label, span, .fontSytles, .dataGrid{
+   color:#606066;
+   font-size: 12px;
+   cursor: pointer;
+   font-family: "source sans pro",helvetica,arial,sans-serif;
+}
+.fontSytles{
+   color:#ffffff !important;
+}
+
+
+/* span {
+   font-family: "source sans pro",helvetica,arial,sans-serif;
+   font-size: 14px;
+} */

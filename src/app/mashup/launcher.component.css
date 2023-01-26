@@ -1,0 +1,25 @@
+/*
+ * Navigation banner
+*/
+.bannerHeader{
+   color:#ffffff;
+   font-size: 16px;
+}
+
+/*
+ * Demo Examples
+*/
+#appMain {
+   float:left;
+   transition: margin-left .5s;
+   width: 100%;
+}
+
+.row {
+   max-width: 100% !important;
+}
+
+
+/*
+ * Miscellaneous
+*/
